@@ -36,8 +36,9 @@ class LearnViewController: UIViewController {
     }
     
     @IBAction func closeButtonDidTouch(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
         
-        dialogView.animation="fall"
+          dialogView.animation="fall"
         dialogView.animateNext{
             self.dismissViewControllerAnimated(true, completion: nil)
         
