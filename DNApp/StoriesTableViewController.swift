@@ -8,6 +8,21 @@
 
 import UIKit
 
+
+protocol StoryTableViewCellDelegate:class{
+
+    func storyTableViewCellDidTouchUpvote(
+        cell:StoryTableViewCell,sender:AnyObject
+    )
+    func   storyTableViewCellDidTouchComment(cell:StoryTableViewCell,sengder:AnyObject)
+
+}
+
+
+
+
+
+
 class StoriesTableViewController: UITableViewController {
 
    
@@ -28,7 +43,21 @@ class StoriesTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell=tableView.dequeueReusableCellWithIdentifier("StoryCell")as!UITableViewCell
+        let cell=tableView.dequeueReusableCellWithIdentifier("StoryCell")as!StoryTableViewCell
+        
+        cell.titleLabel.text="Learn iOS Design and Xcode"
+        cell.badgeImageView.image=UIImage(named: "badge-apple")
+        cell.avatarImage.image=UIImage(named: "content-avatar-default")
+        cell.authorLabel.text="Kevin Feng,iOS Beginner"
+        cell.timeLabel.text="5m"
+        cell.upvoteButton.setTitle("59", forState:UIControlState.Normal)
+        cell.commentButton.setTitle("32",forState:UIControlState.Normal)
+        
+        
+        
+        
+        
+        
         return cell
        
     }
@@ -37,6 +66,18 @@ class StoriesTableViewController: UITableViewController {
         performSegueWithIdentifier("WebSegue", sender: self)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    
+    
+    
+ 
     
     
     

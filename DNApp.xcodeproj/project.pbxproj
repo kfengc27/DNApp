@@ -42,6 +42,9 @@
 		BFF656741B456D7D009F11CF /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6565A1B456D7D009F11CF /* TransitionZoom.swift */; };
 		BFF656751B456D7D009F11CF /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6565B1B456D7D009F11CF /* UnwindSegue.swift */; };
 		BFF656771B4572CA009F11CF /* StoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF656761B4572CA009F11CF /* StoriesTableViewController.swift */; };
+		BFF656791B45A275009F11CF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF656781B45A275009F11CF /* MenuViewController.swift */; };
+		BFF6567B1B45A71B009F11CF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6567A1B45A71B009F11CF /* WebViewController.swift */; };
+		BFF6567F1B45AB8B009F11CF /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6567E1B45AB8B009F11CF /* StoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,9 @@
 		BFF6565A1B456D7D009F11CF /* TransitionZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionZoom.swift; sourceTree = "<group>"; };
 		BFF6565B1B456D7D009F11CF /* UnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegue.swift; sourceTree = "<group>"; };
 		BFF656761B4572CA009F11CF /* StoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoriesTableViewController.swift; sourceTree = "<group>"; };
+		BFF656781B45A275009F11CF /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		BFF6567A1B45A71B009F11CF /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		BFF6567E1B45AB8B009F11CF /* StoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +145,10 @@
 				BFF656401B456D7D009F11CF /* Spring */,
 				96B71EBD1A7505D300545869 /* AppDelegate.swift */,
 				BFF656761B4572CA009F11CF /* StoriesTableViewController.swift */,
+				BFF6567E1B45AB8B009F11CF /* StoryTableViewCell.swift */,
 				BFC3CF491B45180400CB40DB /* LearnViewController.swift */,
+				BFF656781B45A275009F11CF /* MenuViewController.swift */,
+				BFF6567A1B45A71B009F11CF /* WebViewController.swift */,
 				BFC3CF471B44FC4F00CB40DB /* LoginViewController.swift */,
 				96B71EC41A7505D300545869 /* Main.storyboard */,
 				96B71EC71A7505D300545869 /* Images.xcassets */,
@@ -312,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFF6566F1B456D7D009F11CF /* SpringLabel.swift in Sources */,
+				BFF656791B45A275009F11CF /* MenuViewController.swift in Sources */,
 				BFF656601B456D7D009F11CF /* DesignableLabel.swift in Sources */,
 				BFF6565D1B456D7D009F11CF /* Data.swift in Sources */,
 				BFF656651B456D7D009F11CF /* ImageLoader.swift in Sources */,
@@ -333,11 +343,13 @@
 				BFC3CF4A1B45180400CB40DB /* LearnViewController.swift in Sources */,
 				BFF656631B456D7D009F11CF /* DesignableTextView.swift in Sources */,
 				BFF6565F1B456D7D009F11CF /* DesignableImageView.swift in Sources */,
+				BFF6567F1B45AB8B009F11CF /* StoryTableViewCell.swift in Sources */,
 				BFF656671B456D7D009F11CF /* KeyboardAvoidingScrollView.swift in Sources */,
 				BFF656751B456D7D009F11CF /* UnwindSegue.swift in Sources */,
 				BFF656731B456D7D009F11CF /* TransitionManager.swift in Sources */,
 				BFF656771B4572CA009F11CF /* StoriesTableViewController.swift in Sources */,
 				BFF6565C1B456D7D009F11CF /* BlurView.swift in Sources */,
+				BFF6567B1B45A71B009F11CF /* WebViewController.swift in Sources */,
 				BFF656721B456D7D009F11CF /* SpringView.swift in Sources */,
 				BFF656741B456D7D009F11CF /* TransitionZoom.swift in Sources */,
 			);
