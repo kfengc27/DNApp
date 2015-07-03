@@ -8,22 +8,7 @@
 
 import UIKit
 
-
-protocol StoryTableViewCellDelegate:class{
-
-    func storyTableViewCellDidTouchUpvote(
-        cell:StoryTableViewCell,sender:AnyObject
-    )
-    func   storyTableViewCellDidTouchComment(cell:StoryTableViewCell,sengder:AnyObject)
-
-}
-
-
-
-
-
-
-class StoriesTableViewController: UITableViewController {
+class StoriesTableViewController: UITableViewController, StoryTableViewCellDelegate {
 
    
     @IBAction func menuButtonDidTouch(sender: AnyObject) {
@@ -33,7 +18,7 @@ class StoriesTableViewController: UITableViewController {
     }
     @IBAction func loginButtonDidTouch(sender: AnyObject) {
     
-        performSegueWithIdentifier("LoginMenu", sender: self)
+        performSegueWithIdentifier("LoginSegue", sender: self)
     
     
     }
@@ -45,18 +30,27 @@ class StoriesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell=tableView.dequeueReusableCellWithIdentifier("StoryCell")as!StoryTableViewCell
         
-        cell.titleLabel.text="Learn iOS Design and Xcode"
-        cell.badgeImageView.image=UIImage(named: "badge-apple")
-        cell.avatarImage.image=UIImage(named: "content-avatar-default")
-        cell.authorLabel.text="Kevin Feng,iOS Beginner"
-        cell.timeLabel.text="5m"
-        cell.upvoteButton.setTitle("59", forState:UIControlState.Normal)
-        cell.commentButton.setTitle("32",forState:UIControlState.Normal)
+//        
+//        let story = data[indexPath.row]
+//        let title = story["title"] as! String
+//        let badge = story["badge"] as! String
+//        let userPortraitUrl = story["user_portrait_url"] as! String
+//        let userDisplayName = story["user_display_name"] as! String
+//        let userJob = story["user_job"] as! String
+//        let createdAt = story["created_at"] as! String
+//        let voteCount = story["vote_count"] as! Int
+//        let commentCount = story["comment_count"] as! Int
         
+//        
+//        cell.titleLabel.text=title
+//        cell.badgeImageView.image = UIImage(named: "badge-" + badge)
+//        cell.avatarImage.image=UIImage(named: "content-avatar-default")
+//        cell.authorLabel.text = userDisplayName + ", " + userJob
+//        cell.timeLabel.text = timeAgoSinceDate(dateFromString(createdAt, "yyyy-MM-dd'T'HH:mm:ssZ"), true)
+//        cell.upvoteButton.setTitle(toString(voteCount), forState: UIControlState.Normal)
+//        cell.commentButton.setTitle(toString(commentCount), forState: UIControlState.Normal)
         
-        
-        
-        
+        cell.delegate=self
         
         return cell
        
@@ -67,22 +61,31 @@ class StoriesTableViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
+
+    UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
+    
+    
+    
+    }
+    
+    //MARK:StoryTableViewCellDelegate
+    
+    func storyTableViewCellDidTouchUpvote(cell: StoryTableViewCell, sender: AnyObject) {
+        //TODO:Implement Upvote
     }
     
     
-    
-    
- 
-    
-    
-    
-    
-    
-    
+    func storyTableViewCellDidTouchComment(cell: StoryTableViewCell, sender: AnyObject) {
+        performSegueWithIdentifier("CommentsSegue", sender: cell)
+    }
+
     
 }
