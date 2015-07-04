@@ -10,7 +10,10 @@ import UIKit
 
 class StoriesTableViewController: UITableViewController, StoryTableViewCellDelegate {
 
-   
+   let transitionManager = TransitionManager()
+    
+    
+    
     @IBAction func menuButtonDidTouch(sender: AnyObject) {
         performSegueWithIdentifier("MenuSegue", sender: self)
     
@@ -23,32 +26,19 @@ class StoriesTableViewController: UITableViewController, StoryTableViewCellDeleg
     
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return data.count
+        
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell=tableView.dequeueReusableCellWithIdentifier("StoryCell")as!StoryTableViewCell
         
-//        
-//        let story = data[indexPath.row]
-//        let title = story["title"] as! String
-//        let badge = story["badge"] as! String
-//        let userPortraitUrl = story["user_portrait_url"] as! String
-//        let userDisplayName = story["user_display_name"] as! String
-//        let userJob = story["user_job"] as! String
-//        let createdAt = story["created_at"] as! String
-//        let voteCount = story["vote_count"] as! Int
-//        let commentCount = story["comment_count"] as! Int
         
-//        
-//        cell.titleLabel.text=title
-//        cell.badgeImageView.image = UIImage(named: "badge-" + badge)
-//        cell.avatarImage.image=UIImage(named: "content-avatar-default")
-//        cell.authorLabel.text = userDisplayName + ", " + userJob
-//        cell.timeLabel.text = timeAgoSinceDate(dateFromString(createdAt, "yyyy-MM-dd'T'HH:mm:ssZ"), true)
-//        cell.upvoteButton.setTitle(toString(voteCount), forState: UIControlState.Normal)
-//        cell.commentButton.setTitle(toString(commentCount), forState: UIControlState.Normal)
+        let story = data[indexPath.row]
+        
+        cell.configureWithStory(story)
+    
         
         cell.delegate=self
         
@@ -57,7 +47,7 @@ class StoriesTableViewController: UITableViewController, StoryTableViewCellDeleg
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("WebSegue", sender: self)
+        performSegueWithIdentifier("WebSegue", sender: indexPath)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -75,7 +65,7 @@ class StoriesTableViewController: UITableViewController, StoryTableViewCellDeleg
     
     
     }
-    
+
     //MARK:StoryTableViewCellDelegate
     
     func storyTableViewCellDidTouchUpvote(cell: StoryTableViewCell, sender: AnyObject) {
@@ -86,6 +76,36 @@ class StoriesTableViewController: UITableViewController, StoryTableViewCellDeleg
     func storyTableViewCellDidTouchComment(cell: StoryTableViewCell, sender: AnyObject) {
         performSegueWithIdentifier("CommentsSegue", sender: cell)
     }
-
     
+    //MARK:Misc
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //TODO:待完善
+        if segue.identifier=="CommentsSegue"{
+            let toView=segue.destinationViewController as! CommentsTableViewController
+            let indexPath = tableView.indexPathForCell(sender as!UITableViewCell)
+            let story=data[indexPath!.row]
+            toView.story=story
+            
+        }
+        
+        
+        if segue.identifier == "WebSegue" {
+            let toView = segue.destinationViewController as! WebViewController
+            let indexPath = sender as! NSIndexPath
+            let url = data[indexPath.row]["url"].string!
+            toView.url = url
+            
+            UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
+            
+            toView.transitioningDelegate = transitionManager
+        }
+        
+        
+        
+    }
+    
+    
+    
+    
+
 }

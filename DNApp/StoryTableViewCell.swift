@@ -35,6 +35,7 @@ class StoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var commentButton: SpringButton!
     
+    @IBOutlet weak var commentTextView: AutoTextView!
     
     
     weak var delegate:StoryTableViewCellDelegate?
@@ -58,8 +59,38 @@ class StoryTableViewCell: UITableViewCell {
     }
     
     
-    
-    
-    
-    
+    func configureWithStory(story:JSON){
+       
+        let title = story["title"].string!
+        let badge = story["badge"].string!
+        let userPortraitUrl = story["user_portrait_url"].string!
+        let userDisplayName = story["user_display_name"].string!
+        let userJob = story["user_job"].string!
+        let createdAt = story["created_at"].string!
+        let voteCount = story["vote_count"].int!
+        let commentCount = story["comment_count"].int!
+        let comment=story["comment"].string!
+        
+//        if let commentTextView =commentTextView {
+//            commentTextView.text = comment
+//        }
+        
+
+        
+        titleLabel.text=title
+        badgeImageView.image = UIImage(named: "badge-" + badge)
+        avatarImage.image=UIImage(named: "content-avatar-default")
+        authorLabel.text = userDisplayName + ", " + userJob
+        timeLabel.text = timeAgoSinceDate(dateFromString(createdAt, "yyyy-MM-dd'T'HH:mm:ssZ"), true)
+        upvoteButton.setTitle(toString(voteCount), forState: UIControlState.Normal)
+    commentButton.setTitle(toString(commentCount), forState: UIControlState.Normal)
+        
+        
+        if let commentTextView = commentTextView {
+            commentTextView.text = comment
+        }
+        
+
+}
+
 }

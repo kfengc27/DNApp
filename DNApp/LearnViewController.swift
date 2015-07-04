@@ -46,4 +46,29 @@ class LearnViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func twitterButtonDidTouch(sender: AnyObject) {
+        openURL("http://weibo.com/kfengc27")
+    }
+
+    
+    @IBAction func learnsketchButtonDidTouch(sender: AnyObject) {
+        
+        openURL("http://v2ex.com")
+    }
+ 
+    
+    
+    func openURL(url:String){
+        let targetURL=NSURL(string: url)
+        UIApplication.sharedApplication().openURL(targetURL!)
+    
+        openURL("http://weibo.com/kfengc27")
+        
+    }
+    
+    
+    
+    
+    
    }
